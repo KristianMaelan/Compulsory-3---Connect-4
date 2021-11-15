@@ -6,6 +6,9 @@
 #include <array>
 #include <string>
 #include <conio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <cstdlib>
 
 using std::cout;
 using std::cin;
@@ -24,6 +27,7 @@ void gameboardprint();
 void gameboardfileprint();
 std::string gameLoop(std::string, std::string);
 bool winTesting();
+
 
 int animation(std::string, int);
 
@@ -71,13 +75,14 @@ void gameboardfileprint() {
 	ScoreFile << "\n\n" << endl;
 }
 
-
 std::string gameLoop(std::string p1, std::string p2) {
 	p1 = 'X';
 	p2 = 'O';
 
 	for (int gamelength = 0; gamelength < 42; gamelength++) {
 		system("cls");
+		int srand((time(0)));
+		int AiGuess = (rand() % 7) + 0;
 		if (gamelength % 2 == 0) { //player 1
 			gameboardprint();
 			cout << "\t\t" << player1 << ", your turn! Choose a number according to where you want to place a piece." << endl;
@@ -138,6 +143,21 @@ std::string gameLoop(std::string p1, std::string p2) {
 		}
 		else
 		{
+			if ((player2 == ("AI")) || (player2 == ("ai")) || (player2 == ("Ai")))
+			{
+				cout << "\t\tComputers turn!" << endl;
+				bool aiChoosing = true;
+				do
+				{
+				if (gameboard[0][AiGuess] == "*")
+				{
+					aiChoosing = false;
+				}
+				} while (aiChoosing);
+				animation("O", AiGuess);
+			}
+			else
+			{
 			gameboardprint();
 			cout << "\t\t" << player2 << ", your turn! Choose a number according to where you want to place a piece." << endl;
 			char choice = 0;
@@ -193,6 +213,7 @@ std::string gameLoop(std::string p1, std::string p2) {
 					break;
 				}
 			} while (!acceptedmove);
+			}
 			if (winTesting()) { winner = player2; loser = player1; break; }
 		}
 	};
