@@ -1,0 +1,11 @@
+		Welcome to the list of winners in Connect 4!
+
+	Kristian won against Simon! With this board: 
+			| 1 2 3 4 5 6 7  |
+			| * * * * * * *  |
+			| * * * * * * *  |
+			| * * * * * * *  |
+			| * * * * * * *  |
+			| O O O * * * *  |
+			| X X X X * * *  |
+
